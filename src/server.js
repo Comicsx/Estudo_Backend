@@ -6,7 +6,7 @@ app.get("/message/:id/:user", (request, response) => {
     const {id, user} = request.params;
 
     response.send(`
-    Mensagem ID: ${id}.
+    Mensagem do ID: ${id}.
     Para o usuário: ${user}`);
 });
 
