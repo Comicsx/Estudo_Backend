@@ -1,21 +1,12 @@
 const express = require("express");
 
 const app = express();
+app.use(express.json())
 
-app.get("/message/:id/:user", (request, response) => {
-    const {id, user} = request.params;
+app.post("/user", (request, response) => {
+    const { name, email, password } = request.body;
 
-    response.send(`
-    Mensagem do ID: ${id}.
-    Para o usuário: ${user}`);
-});
-
-app.get("/user", (request, response) => {
-    const {page, limit} = request.query;
-
-    response.send(`
-    Página: ${page}. 
-    Limite: ${limit}`)
+    response.json({name, email, password})
 
 });
 
