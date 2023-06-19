@@ -5,8 +5,18 @@ const UserController = require("../controllers/UserController"); /* Por ser uma 
 const userController = new UserController /* Deixei a minha classe em memória */
 
 
+function myMiddleware(request, response, next) {
+    console.log("Você passou pelo Middleware!");
 
-userRoutes.post("/", userController.create)
+    if(!request.body.isAdmin) {
+        return response.json({ message: "Você não está autorizado!"})
+    }
+
+    next()
+}
+
+
+userRoutes.post("/", myMiddleware, userController.create)
 
 
 module.exports = userRoutes;
