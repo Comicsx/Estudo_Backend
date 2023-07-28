@@ -4,7 +4,7 @@ const path = require("path");
 
 async function sqliteConection(){ //função asincrona, permite que rode sem estar pronta ainda
     const database = await sqlite.open({
-        filename: path.resolve(__dirname, "..", "database.db"),
+        filename: path.resolve(__dirname, "..", "database", "database.db"), //mudamos o ".." por src
         driver: sqlite3.Database
     });
     
